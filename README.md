@@ -46,6 +46,7 @@ ggplot(penguins, aes(body_mass_g, bill_length_mm))+ # this is the data
      geom_point() # here we add the points
 ```
 
+<img width="887" alt="Screen Shot 2020-07-04 at 9 09 20 PM" src="https://user-images.githubusercontent.com/39834789/86522580-cd4d5780-be3a-11ea-9cd7-9748d668cbbd.png">
 
 ### Change the size of points
 
@@ -56,15 +57,14 @@ ggplot(penguins, aes(body_mass_g, bill_length_mm))+
      geom_point(size = 3) 
 ```
 
+<img width="887" alt="Screen Shot 2020-07-04 at 9 11 04 PM" src="https://user-images.githubusercontent.com/39834789/86522590-e5bd7200-be3a-11ea-822e-c40d3e55dcdc.png">
 
 
 ### Change the shape of points
 
 In `ggplot2`, it is possible to change the shape of the points. Here is a quick reference guide:
 
-```{r, echo=FALSE, fig.align = "center"}
-#include_graphics("shapes.png")
-```
+![shapes](https://user-images.githubusercontent.com/39834789/86522564-8e1f0680-be3a-11ea-9c7b-8cd1f39eb479.png)
 
 The shape of all datapoints can be changed with e.g. `shape = 8`.
 
@@ -72,6 +72,9 @@ The shape of all datapoints can be changed with e.g. `shape = 8`.
 ggplot(penguins, aes(body_mass_g, bill_length_mm))+
      geom_point(size = 3, shape = 8) 
 ```
+
+
+
 
 
 Alternatively, we can change the shape of our points based on species with `aes(shape = species)`.
