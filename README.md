@@ -1,4 +1,3 @@
-# ggplot2-for-publications
 # Making figures ready for publication with `ggplot2`
 
 This tutorial offers a step-by-step guide for how to create publication-ready figures using `ggplot2` and the data from `palmerpenguins`.
@@ -7,7 +6,6 @@ This tutorial offers a step-by-step guide for how to create publication-ready fi
 ## Install the package & data
 
 ```{r, message = FALSE}
-
 # Install the package
 remotes::install_github("allisonhorst/palmerpenguins")
 
@@ -17,11 +15,7 @@ library(palmerpenguins)
 # Load the data into the Global Environment
 data("penguins")
 
-# View the data
-head(penguins)
-
 ```
-
 
 
 ## The steps for creating a beautiful scatter plot in `ggplot2`
