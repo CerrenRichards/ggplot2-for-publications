@@ -21,7 +21,7 @@ data("penguins")
 
 ![image](https://user-images.githubusercontent.com/39834789/86522450-7f375480-be38-11ea-9437-9fd2a382aa7b.png)
 
-Artwork by @llison_horst
+Artwork by @allison_horst
 
 
 ## What are culmen length & depth?
@@ -477,7 +477,7 @@ Here we will arrange four of the plots that we made above into one figure using 
 Note we previously saved our figures (`ellipse`, `density`, `bar`, `box_plot`) in the Global Environment and we are calling on them here.
 
 
-``````{r, warning=FALSE, fig.align = "center", message = FALSE, fig.width=12, fig.height=8}
+```{r, warning=FALSE, fig.align = "center", message = FALSE, fig.width=12, fig.height=8}
 library(ggpubr)
 
 ggarrange(ellipse, density, bar, box_plot,
