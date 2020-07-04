@@ -2,6 +2,7 @@
 
 This tutorial offers a step-by-step guide for how to create publication-ready figures using `ggplot2` and the data from `palmerpenguins`.
 
+![image](https://user-images.githubusercontent.com/39834789/86522447-78104680-be38-11ea-8330-3d5fc96ceafc.png)
 
 ## Install the package & data
 
@@ -14,8 +15,23 @@ library(palmerpenguins)
 
 # Load the data into the Global Environment
 data("penguins")
-
 ```
+
+## Meet the Penguins
+
+![image](https://user-images.githubusercontent.com/39834789/86522450-7f375480-be38-11ea-9437-9fd2a382aa7b.png)
+
+Artwork by @llison_horst
+
+
+## What are culmen length & depth?
+
+The culmen is the upper ridge of a bird’s bill. In the simplified penguins data, culmen length and depth are renamed as variables bill_length_mm and bill_depth_mm to be more intuitive.
+For this penguin data, the culmen (bill) length and depth are measured as shown below:
+
+![image](https://user-images.githubusercontent.com/39834789/86522451-84949f00-be38-11ea-9555-6409579f3b58.png)
+
+Artwork by @allison_horst
 
 
 ## The steps for creating a beautiful scatter plot in `ggplot2`
@@ -23,13 +39,11 @@ data("penguins")
 First we will create a basic scatterplot of `body_mass_g` against `bill_length_mm`.
 
 ```{r, warning=FALSE, fig.align = "center", out.width = '50%'}
-
 # Load the package
 library(ggplot2)
 
 ggplot(penguins, aes(body_mass_g, bill_length_mm))+ # this is the data
      geom_point() # here we add the points
-
 ```
 
 
@@ -38,10 +52,8 @@ ggplot(penguins, aes(body_mass_g, bill_length_mm))+ # this is the data
 We can manually change the size of our datapoints. The points in the standard plot are quite small, so lets increase the size of the points with `size = 3`.
 
 ```{r, warning=FALSE, fig.align = "center", out.width = '50%'}
-
 ggplot(penguins, aes(body_mass_g, bill_length_mm))+ 
      geom_point(size = 3) 
-
 ```
 
 
@@ -57,20 +69,16 @@ In `ggplot2`, it is possible to change the shape of the points. Here is a quick 
 The shape of all datapoints can be changed with e.g. `shape = 8`.
 
 ```{r, warning=FALSE, fig.align = "center", out.width = '50%'}
-
 ggplot(penguins, aes(body_mass_g, bill_length_mm))+
      geom_point(size = 3, shape = 8) 
-
 ```
 
 
 Alternatively, we can change the shape of our points based on species with `aes(shape = species)`.
 
 ```{r, warning=FALSE, fig.align = "center", out.width = '50%'}
-
 ggplot(penguins, aes(body_mass_g, bill_length_mm))+ 
      geom_point(aes(shape = species), size = 3) 
-
 ```
 
 
@@ -79,10 +87,8 @@ ggplot(penguins, aes(body_mass_g, bill_length_mm))+
 You can also change the opacity of the data points using `alpha`. Alpha values are required to be between 0 - 1 where 0 is transparent and 1 is opaque.  
 
 ```{r, warning=FALSE, fig.align = "center", out.width = '50%'}
-
 ggplot(penguins, aes(body_mass_g, bill_length_mm))+ 
      geom_point(aes(shape = species), size = 3, alpha = 0.6) 
-
 ```
 
 
@@ -92,18 +98,14 @@ ggplot(penguins, aes(body_mass_g, bill_length_mm))+
 Now lets explore the different species by adding colour with the code `colour = species`. 
 
 ```{r, warning=FALSE, fig.align = "center", out.width = '50%'}
-
 ggplot(penguins, aes(body_mass_g, bill_length_mm))+ 
      geom_point(aes(shape = species, colour = species), size = 3, alpha = 0.6) 
-
-
 ```
 
 
 This red-green colour combination is colourblind unfrieldly, so lets change the colour of the points with `scale_colour_manual`. To ensure the shapes match with the names we will also use `scale_shape_manual`.
 
 ```{r, warning=FALSE, fig.align = "center", out.width = '50%'}
-
 ggplot(penguins, aes(body_mass_g, bill_length_mm))+ 
      geom_point(aes(shape = species, colour = species), size = 3, alpha = 0.6)+ 
   
@@ -111,15 +113,12 @@ ggplot(penguins, aes(body_mass_g, bill_length_mm))+
                       labels = c("Chinstrap", "Gentoo", "Adélie"))+
   scale_shape_manual(values = c(17, 15, 16),
                      labels = c("Chinstrap", "Gentoo", "Adélie"))
-
-
 ```
 
 
 We won't change the points any more, so let's save the plot as `penguin_plot`, so we can build upon it.
 
 ```{r, warning=FALSE, fig.align = "center", out.width = '50%'}
-
 penguin_plot <- ggplot(penguins, aes(body_mass_g, bill_length_mm))+ 
      geom_point(aes(shape = species, colour = species), size = 3, alpha = 0.6)+ 
   
@@ -127,7 +126,6 @@ penguin_plot <- ggplot(penguins, aes(body_mass_g, bill_length_mm))+
                       labels = c("Chinstrap", "Gentoo", "Adélie"))+
      scale_shape_manual(values = c(17, 15, 16),
                      labels = c("Chinstrap", "Gentoo", "Adélie"))
-
 ```
 
 ### Changing the background
@@ -145,8 +143,6 @@ You can change the background of `ggplot2` figures in a variety of ways with:
 
 
 ```{r, echo=FALSE, warning=FALSE, message = FALSE, fig.align = "center"}
-
-
 plot <- ggplot(penguins, aes(body_mass_g, bill_length_mm))+ 
      geom_point( alpha = 0.3)
 
@@ -166,7 +162,6 @@ ggarrange(a, b, c, d,
 
 ggarrange( e, f, g, h, 
           nrow = 2, ncol = 2)
-
 ```
 
 
@@ -214,7 +209,6 @@ penguin_plot
 In the standard plots, the axes titles are really close to the plot. We will increase their distance with `vjust`:
 
 ```{r, warning=FALSE, fig.align = "center", out.width = '50%'}
-
 penguin_plot <- penguin_plot + 
     theme(axis.title.y = element_text(vjust = 3))+ # increase distance from the y-axis
     theme(axis.title.x = element_text(vjust = -1)) # increase distance from the x-axis
@@ -255,13 +249,11 @@ Publications require high quality images and they specify the size and format re
 It allows you to save high quality images in a variety of different file types (e.g. "png", "eps", "ps", "tex", "pdf", "jpeg", "tiff", "png", "bmp", "svg", "wmf"). You can also specify the `width` and `height` in "in", "cm", or "mm", and specify the plot resolution with `dpi`.
 
 ```{r, eval = FALSE}
-
 # This will save the last plot for the code you ran:
 
 ggsave("penguin_plot.pdf", 
        dpi = 600, 
        width = 100, height = 60, unit = "mm")
-
 ```
 
 #### `pdf`
@@ -269,14 +261,12 @@ ggsave("penguin_plot.pdf",
 An alternative method is to use `pdf`. This allows you to specify the colour mode (e.g. cmyk).
 
 ```{r, eval = FALSE}
-
 pdf("ggplot-cmyk.pdf", width = 12 / 2.54, height = 8 / 2.54,
     colormodel = "cmyk")
 
 print(penguin_plot)
 
 dev.off()
-
 ```
 
 
@@ -289,10 +279,8 @@ dev.off()
 Size can be changed based on data within the `penguins` dataframe. For example, here we have changed the size of the points based on `bill_depth_mm`.
 
 ```{r, warning=FALSE, fig.align = "center", out.width = '50%'}
-
 ggplot(penguins, aes(body_mass_g, bill_length_mm))+ 
      geom_point(aes(size = bill_depth_mm)) 
-
 ```
 
 
@@ -301,7 +289,6 @@ ggplot(penguins, aes(body_mass_g, bill_length_mm))+
 Add 95% confidence interval ellispses with `stat_ellipse`.
 
 ```{r, warning=FALSE, fig.align = "center", out.width = '50%'}
-
 ellipse<- penguin_plot + 
   stat_ellipse(aes(colour = species, level=0.95))
   
@@ -314,12 +301,10 @@ ellipse
 Add a linear regression line with `geom_smooth(method=lm)`.
 
 ```{r, warning=FALSE, fig.align = "center", out.width = '50%'}
-
 lm <- penguin_plot + 
   geom_smooth(method=lm, aes(colour = species))
 
-lm
-  
+lm 
 ```
 
 
@@ -328,11 +313,9 @@ lm
 `facet_wrap` is a fantastic tool to slit plots based on a specified categorical column. Here we will use the `species` column.  
 
 ```{r, warning=FALSE, fig.align = "center", out.width = '50%'}
-
 penguin_plot + 
   facet_wrap(~species, ncol = 3, nrow = 1) + # specifying 3 columns, 1 row
   theme(legend.position = "none") # remove legend
-  
 ```
 
 ### Changing strip design
@@ -340,13 +323,11 @@ penguin_plot +
 It is also possible to change the `size`, `colour`, `face` and `fill` colour of the facet strips with the following code:
 
 ```{r, warning=FALSE, fig.align = "center", out.width = '50%'}
-
 penguin_plot + 
   facet_wrap(~species, ncol = 3, nrow = 1) + # specifying 3 columns, 1 row
   theme(legend.position = "none")+ # remove legend
     theme(strip.text.x = element_text(size = 16, color = "white", face = "bold"), 
           strip.background = element_rect(fill="black"))
-  
 ```
 
 ### Removing white space and free axes
@@ -354,13 +335,11 @@ penguin_plot +
 We can also remove the free space using `scales = free`.
 
 ```{r, warning=FALSE, fig.align = "center", out.width = '50%'}
-
 penguin_plot + 
   facet_wrap(~species, scales = "free")+ 
   theme(legend.position = "none")+ # remove legend
     theme(strip.text.x = element_text(size = 16, color = "white", face = "bold"), 
           strip.background = element_rect(fill="black"))
-
 ```
 
 ### `facet_grid`: Free facet width
@@ -368,13 +347,11 @@ penguin_plot +
 To allow the facets to be different widths, we must use `facet_grid` and `space = "free"`. This can be used with `scales = "free"`.
 
 ```{r, warning=FALSE, fig.align = "center", out.width = '50%'}
-
 penguin_plot + 
   facet_grid(.~species, scales = "free", space = "free")  +
   theme(legend.position = "none")+ # remove legend
     theme(strip.text.x = element_text(size = 16, color = "white", face = "bold"), 
           strip.background = element_rect(fill="black"))
-
 ```
 
 
@@ -393,14 +370,12 @@ ggplot(penguin_summary, aes(y = mean, x=species, fill = species)) +
   geom_bar(stat="identity")+
    geom_errorbar(aes(ymin = mean-sd, ymax = mean+sd), 
                 width=.1)  
-
 ```
 
 
 Create the plot like the code above for the scatter plot.
 
 ```{r, warning=FALSE, fig.align = "center", out.width = '50%'}
-
 bar <- ggplot(penguin_summary, aes(y = mean, x = species, fill = species)) + 
   geom_bar(stat = "identity")+
   geom_errorbar(aes(ymin = mean-sd, ymax = mean+sd), 
@@ -415,34 +390,27 @@ bar <- ggplot(penguin_summary, aes(y = mean, x = species, fill = species)) +
   theme(axis.title.x = element_text(vjust = -1)) 
 
 bar
-
 ```
-
 
 
 ### Histogram
 
 ```{r, warning=FALSE, fig.align = "center", message = FALSE, out.width = '50%'}
-
 ggplot(penguins, aes(x = flipper_length_mm, fill = species)) + 
   geom_histogram(alpha = 0.4)+
   scale_fill_manual(values = c( "#FF6A00","#C15CCB",  "#00868B"))
-
 ```
 
 ### Density Plot
 
 ```{r, warning=FALSE, fig.align = "center", message = FALSE, out.width = '50%'}
-
 ggplot(penguins, aes(x = flipper_length_mm, fill = species)) + 
   geom_density(alpha = 0.4)+
   scale_fill_manual(values = c( "#FF6A00","#C15CCB",  "#00868B"))
-
 ```
 
 
 ```{r, warning=FALSE, fig.align = "center", message = FALSE, out.width = '50%'}
-
  flipper <- ggplot(penguins, aes(x = flipper_length_mm, fill = species, colour = species)) + 
   geom_density(alpha = 0.4)+
   scale_fill_manual(values = c( "#FF6A00","#C15CCB",  "#00868B"))+
@@ -456,14 +424,12 @@ ggplot(penguins, aes(x = flipper_length_mm, fill = species)) +
   theme(axis.title.y = element_text(vjust = 3)) +
   theme(axis.title.x = element_text(vjust = -1)) 
 
-flipper
-  
+flipper 
 ```
 
 ### Add a mean line
 
 ```{r, warning=FALSE, fig.align = "center", message = FALSE, out.width = '50%'}
-
 flipper_mean <- penguins %>%
         group_by(species) %>%
         summarise(mean = mean(flipper_length_mm, na.rm = TRUE))
@@ -480,15 +446,12 @@ density
 ### Box plot
 
 ```{r, warning=FALSE, fig.align = "center", message = FALSE, out.width = '50%'}
-
-
 ggplot(na.omit(penguins), aes(x=species, y=flipper_length_mm, fill=sex)) +
   geom_boxplot()
 ```
 
 
 ```{r, warning=FALSE, fig.align = "center", message = FALSE, out.width = '50%'}
-
 box_plot<- ggplot(na.omit(penguins), aes(x=species, y=flipper_length_mm, fill=sex)) +
   geom_boxplot()+
   theme_bw(base_size = 20)+
@@ -520,7 +483,6 @@ library(ggpubr)
 ggarrange(ellipse, density, bar, box_plot,
           nrow = 2, ncol = 2,
           labels = c("a", "b", "c", "d"))
-
 ```
 
 #### Same axes
@@ -528,7 +490,6 @@ ggarrange(ellipse, density, bar, box_plot,
 If two plots have the same axes, you can remove one and use `align = "v"` to ensure the plots remain the same size.
 
 ```{r, warning=FALSE, fig.align = "center", message = FALSE, fig.width=12, fig.height=8}
-
 # Remove y axes text and title
 lm <- lm +
    theme(axis.title.y=element_blank(),
@@ -540,7 +501,6 @@ ggarrange(ellipse, lm,
           nrow = 1, ncol = 2,
           labels = c("a", "b"),
           align = "v")
-
 ```
 
 #### `patchwork`
@@ -557,10 +517,14 @@ We add the figure labels with e.g. `labs(tag = 'a')`. We will also make two of o
 
 
 ```{r, warning=FALSE, fig.align = "center", message = FALSE, fig.width=18, fig.height=10}
-
 library(patchwork)
 
 (ellipse + labs(tag = 'a')| ((bar+ labs(tag = 'b')) / (box_plot +labs(tag = 'c')))) + plot_layout(widths=c(2,1))
-
 ```
+
+
+
+![image](https://user-images.githubusercontent.com/39834789/86522452-88282600-be38-11ea-8095-4d2cfcd60373.png)
+
+Artwork by @CerrenRichards
 
