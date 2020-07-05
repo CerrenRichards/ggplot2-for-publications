@@ -73,8 +73,7 @@ ggplot(penguins, aes(body_mass_g, bill_length_mm))+
      geom_point(size = 3, shape = 8) 
 ```
 
-
-
+<img width="887" alt="Screen Shot 2020-07-04 at 9 15 40 PM" src="https://user-images.githubusercontent.com/39834789/86522659-e4407980-be3b-11ea-823a-65dabc7f10e2.png">
 
 
 Alternatively, we can change the shape of our points based on species with `aes(shape = species)`.
@@ -84,6 +83,7 @@ ggplot(penguins, aes(body_mass_g, bill_length_mm))+
      geom_point(aes(shape = species), size = 3) 
 ```
 
+<img width="887" alt="Screen Shot 2020-07-04 at 9 16 06 PM" src="https://user-images.githubusercontent.com/39834789/86522661-e7d40080-be3b-11ea-9d02-fb763a7c2c00.png">
 
 ### Change the opacity of points
 
@@ -94,7 +94,7 @@ ggplot(penguins, aes(body_mass_g, bill_length_mm))+
      geom_point(aes(shape = species), size = 3, alpha = 0.6) 
 ```
 
-
+<img width="887" alt="Screen Shot 2020-07-04 at 9 16 40 PM" src="https://user-images.githubusercontent.com/39834789/86522662-e86c9700-be3b-11ea-8cd7-ff602bbfd4ad.png">
 
 ### Adding colour
 
@@ -105,6 +105,7 @@ ggplot(penguins, aes(body_mass_g, bill_length_mm))+
      geom_point(aes(shape = species, colour = species), size = 3, alpha = 0.6) 
 ```
 
+<img width="887" alt="Screen Shot 2020-07-04 at 9 17 00 PM" src="https://user-images.githubusercontent.com/39834789/86522663-e86c9700-be3b-11ea-961d-0321b70dc2e7.png">
 
 This red-green colour combination is colourblind unfrieldly, so lets change the colour of the points with `scale_colour_manual`. To ensure the shapes match with the names we will also use `scale_shape_manual`.
 
@@ -118,6 +119,7 @@ ggplot(penguins, aes(body_mass_g, bill_length_mm))+
                      labels = c("Chinstrap", "Gentoo", "Adélie"))
 ```
 
+<img width="887" alt="Screen Shot 2020-07-04 at 9 17 21 PM" src="https://user-images.githubusercontent.com/39834789/86522664-e9052d80-be3b-11ea-8124-a6e5e97002ab.png">
 
 We won't change the points any more, so let's save the plot as `penguin_plot`, so we can build upon it.
 
@@ -144,29 +146,7 @@ You can change the background of `ggplot2` figures in a variety of ways with:
 - `theme_void()`
 - `theme_dark()`
 
-
-```{r, echo=FALSE, warning=FALSE, message = FALSE, fig.align = "center"}
-plot <- ggplot(penguins, aes(body_mass_g, bill_length_mm))+ 
-     geom_point( alpha = 0.3)
-
-a <- plot + theme_gray() + ggtitle("theme_gray")
-b <- plot + theme_bw() + ggtitle("theme_bw")
-c <- plot + theme_linedraw() + ggtitle("theme_linedraw")
-d <- plot + theme_light() + ggtitle("theme_light")
-e <- plot + theme_minimal() + ggtitle("theme_minimal")
-f <- plot + theme_classic() + ggtitle("theme_classic")
-g <- plot + theme_void() + ggtitle("theme_void")
-h <- plot + theme_dark() + ggtitle("theme_dark")
-
-library(ggpubr)
-
-ggarrange(a, b, c, d, 
-          nrow = 2, ncol = 2)
-
-ggarrange( e, f, g, h, 
-          nrow = 2, ncol = 2)
-```
-
+<img width="553" alt="Screen Shot 2020-07-04 at 9 18 04 PM" src="https://user-images.githubusercontent.com/39834789/86522665-e99dc400-be3b-11ea-9696-4ad2a5adfb0f.png">
 
 
 My personal favourite is `theme_bw` therefore we will continue to make our plot with this theme. 
@@ -180,7 +160,7 @@ penguin_plot +
         panel.grid.minor = element_blank()) # remove the minor lines
 ```
 
-
+<img width="802" alt="Screen Shot 2020-07-04 at 9 22 35 PM" src="https://user-images.githubusercontent.com/39834789/86522769-8ad94a00-be3d-11ea-8f85-e925c5b40cce.png">
 
 ### Changing the text size
 
@@ -195,6 +175,8 @@ penguin_plot <- penguin_plot +
 penguin_plot
 ```
 
+<img width="802" alt="Screen Shot 2020-07-04 at 9 23 00 PM" src="https://user-images.githubusercontent.com/39834789/86522979-5fa42a00-be40-11ea-9271-6a1b831736e8.png">
+
 ### Renaming the axes and legend
 
 You can rename the axes and legend using `labs`.
@@ -206,6 +188,9 @@ penguin_plot <- penguin_plot +
 
 penguin_plot
 ```
+
+
+<img width="802" alt="Screen Shot 2020-07-04 at 9 23 16 PM" src="https://user-images.githubusercontent.com/39834789/86522980-629f1a80-be40-11ea-963c-c74015f4e1f3.png">
 
 ### Change axes position
 
@@ -219,7 +204,7 @@ penguin_plot <- penguin_plot +
 penguin_plot
 ```
 
-
+<img width="802" alt="Screen Shot 2020-07-04 at 9 23 33 PM" src="https://user-images.githubusercontent.com/39834789/86522981-6337b100-be40-11ea-8cad-2ec62cbba3c6.png">
 
 ### Change legend position
 
@@ -241,6 +226,7 @@ penguin_plot <- penguin_plot +
 penguin_plot
 ```
 
+<img width="823" alt="Screen Shot 2020-07-04 at 9 23 52 PM" src="https://user-images.githubusercontent.com/39834789/86522982-63d04780-be40-11ea-9840-93bd41523d72.png">
 
 ### Saving the figure
 
@@ -285,7 +271,7 @@ Size can be changed based on data within the `penguins` dataframe. For example, 
 ggplot(penguins, aes(body_mass_g, bill_length_mm))+ 
      geom_point(aes(size = bill_depth_mm)) 
 ```
-
+<img width="823" alt="Screen Shot 2020-07-04 at 9 24 22 PM" src="https://user-images.githubusercontent.com/39834789/86522983-63d04780-be40-11ea-9169-6c766151715c.png">
 
 ### Adding an ellispe
 
@@ -299,6 +285,9 @@ ellipse<- penguin_plot +
 ellipse
 ```
 
+<img width="823" alt="Screen Shot 2020-07-04 at 9 24 42 PM" src="https://user-images.githubusercontent.com/39834789/86522964-29ff4100-be40-11ea-8a8b-dfb4fa8cb66a.png">
+
+
 ### Linear regression line
 
 Add a linear regression line with `geom_smooth(method=lm)`.
@@ -309,7 +298,7 @@ lm <- penguin_plot +
 
 lm 
 ```
-
+<img width="823" alt="Screen Shot 2020-07-04 at 9 24 56 PM" src="https://user-images.githubusercontent.com/39834789/86522966-2cfa3180-be40-11ea-8a52-2a9b094f2c62.png">
 
 ### `facet_wrap`
 
@@ -320,6 +309,9 @@ penguin_plot +
   facet_wrap(~species, ncol = 3, nrow = 1) + # specifying 3 columns, 1 row
   theme(legend.position = "none") # remove legend
 ```
+
+<img width="823" alt="Screen Shot 2020-07-04 at 9 25 12 PM" src="https://user-images.githubusercontent.com/39834789/86522947-e4db0f00-be3f-11ea-9766-0b4539fec0b9.png">
+
 
 ### Changing strip design
 
@@ -333,6 +325,9 @@ penguin_plot +
           strip.background = element_rect(fill="black"))
 ```
 
+<img width="823" alt="Screen Shot 2020-07-04 at 9 25 28 PM" src="https://user-images.githubusercontent.com/39834789/86522949-e73d6900-be3f-11ea-8d8c-d94e218183d3.png">
+
+
 ### Removing white space and free axes
 
 We can also remove the free space using `scales = free`.
@@ -345,6 +340,9 @@ penguin_plot +
           strip.background = element_rect(fill="black"))
 ```
 
+<img width="823" alt="Screen Shot 2020-07-04 at 9 25 48 PM" src="https://user-images.githubusercontent.com/39834789/86522950-e7d5ff80-be3f-11ea-907d-6db8db3bbdc7.png">
+
+
 ### `facet_grid`: Free facet width
 
 To allow the facets to be different widths, we must use `facet_grid` and `space = "free"`. This can be used with `scales = "free"`.
@@ -356,7 +354,7 @@ penguin_plot +
     theme(strip.text.x = element_text(size = 16, color = "white", face = "bold"), 
           strip.background = element_rect(fill="black"))
 ```
-
+<img width="823" alt="Screen Shot 2020-07-04 at 9 26 06 PM" src="https://user-images.githubusercontent.com/39834789/86522951-e86e9600-be3f-11ea-9bbc-e4421015a054.png">
 
 ### Bar plot
 
@@ -374,7 +372,7 @@ ggplot(penguin_summary, aes(y = mean, x=species, fill = species)) +
    geom_errorbar(aes(ymin = mean-sd, ymax = mean+sd), 
                 width=.1)  
 ```
-
+<img width="823" alt="Screen Shot 2020-07-04 at 9 26 26 PM" src="https://user-images.githubusercontent.com/39834789/86522919-988fcf00-be3f-11ea-9150-58c63f1029e7.png">
 
 Create the plot like the code above for the scatter plot.
 
@@ -394,7 +392,7 @@ bar <- ggplot(penguin_summary, aes(y = mean, x = species, fill = species)) +
 
 bar
 ```
-
+<img width="823" alt="Screen Shot 2020-07-04 at 9 26 41 PM" src="https://user-images.githubusercontent.com/39834789/86522921-99c0fc00-be3f-11ea-84a6-11f299072466.png">
 
 ### Histogram
 
@@ -404,6 +402,8 @@ ggplot(penguins, aes(x = flipper_length_mm, fill = species)) +
   scale_fill_manual(values = c( "#FF6A00","#C15CCB",  "#00868B"))
 ```
 
+<img width="823" alt="Screen Shot 2020-07-04 at 9 26 57 PM" src="https://user-images.githubusercontent.com/39834789/86522901-5cf50500-be3f-11ea-8118-717799bcfcbd.png">
+
 ### Density Plot
 
 ```{r, warning=FALSE, fig.align = "center", message = FALSE, out.width = '50%'}
@@ -412,6 +412,7 @@ ggplot(penguins, aes(x = flipper_length_mm, fill = species)) +
   scale_fill_manual(values = c( "#FF6A00","#C15CCB",  "#00868B"))
 ```
 
+<img width="823" alt="Screen Shot 2020-07-04 at 9 27 14 PM" src="https://user-images.githubusercontent.com/39834789/86522902-5ebec880-be3f-11ea-9a0e-695413543356.png">
 
 ```{r, warning=FALSE, fig.align = "center", message = FALSE, out.width = '50%'}
  flipper <- ggplot(penguins, aes(x = flipper_length_mm, fill = species, colour = species)) + 
@@ -430,6 +431,8 @@ ggplot(penguins, aes(x = flipper_length_mm, fill = species)) +
 flipper 
 ```
 
+<img width="823" alt="Screen Shot 2020-07-04 at 9 27 30 PM" src="https://user-images.githubusercontent.com/39834789/86522903-5feff580-be3f-11ea-8d42-52f75619abaf.png">
+
 ### Add a mean line
 
 ```{r, warning=FALSE, fig.align = "center", message = FALSE, out.width = '50%'}
@@ -443,7 +446,7 @@ density <- flipper +
 density
 ```
 
-
+<img width="823" alt="Screen Shot 2020-07-04 at 9 27 47 PM" src="https://user-images.githubusercontent.com/39834789/86522904-60888c00-be3f-11ea-91a6-8d1e3ae38e46.png">
 
 
 ### Box plot
@@ -452,6 +455,7 @@ density
 ggplot(na.omit(penguins), aes(x=species, y=flipper_length_mm, fill=sex)) +
   geom_boxplot()
 ```
+<img width="823" alt="Screen Shot 2020-07-04 at 9 28 03 PM" src="https://user-images.githubusercontent.com/39834789/86522880-156e7900-be3f-11ea-9f1c-9959595a8e5f.png">
 
 
 ```{r, warning=FALSE, fig.align = "center", message = FALSE, out.width = '50%'}
@@ -466,7 +470,7 @@ box_plot<- ggplot(na.omit(penguins), aes(x=species, y=flipper_length_mm, fill=se
 
 box_plot
 ```
-
+<img width="823" alt="Screen Shot 2020-07-04 at 9 28 17 PM" src="https://user-images.githubusercontent.com/39834789/86522876-0ab3e400-be3f-11ea-92c7-8a7bf2fb638d.png">
 
 
 ### Arrange plots
@@ -488,6 +492,10 @@ ggarrange(ellipse, density, bar, box_plot,
           labels = c("a", "b", "c", "d"))
 ```
 
+
+<img width="887" alt="Screen Shot 2020-07-04 at 9 28 41 PM" src="https://user-images.githubusercontent.com/39834789/86522873-f4a62380-be3e-11ea-8d5f-1f914c14a793.png">
+
+
 #### Same axes
 
 If two plots have the same axes, you can remove one and use `align = "v"` to ensure the plots remain the same size.
@@ -505,6 +513,9 @@ ggarrange(ellipse, lm,
           labels = c("a", "b"),
           align = "v")
 ```
+
+<img width="887" alt="Screen Shot 2020-07-04 at 9 29 02 PM" src="https://user-images.githubusercontent.com/39834789/86522871-e48e4400-be3e-11ea-99cd-f43f1c9edd5d.png">
+
 
 #### `patchwork`
 
@@ -524,7 +535,7 @@ library(patchwork)
 
 (ellipse + labs(tag = 'a')| ((bar+ labs(tag = 'b')) / (box_plot +labs(tag = 'c')))) + plot_layout(widths=c(2,1))
 ```
-
+<img width="887" alt="Screen Shot 2020-07-04 at 9 29 25 PM" src="https://user-images.githubusercontent.com/39834789/86522867-d93b1880-be3e-11ea-863c-d4ca3b0498f6.png">
 
 
 ![image](https://user-images.githubusercontent.com/39834789/86522452-88282600-be38-11ea-8095-4d2cfcd60373.png)
